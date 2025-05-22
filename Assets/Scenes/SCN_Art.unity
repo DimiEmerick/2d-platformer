@@ -379,8 +379,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388782692}
   m_Enabled: 1
-  m_SortingLayerID: 2097750727
-  m_SortingLayer: 0
+  m_SortingLayerID: 209796967
+  m_SortingLayer: 1
   m_SortingOrder: 0
 --- !u!1 &394303427
 GameObject:
@@ -1643,8 +1643,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207329805}
   m_Enabled: 1
-  m_SortingLayerID: 2097750727
-  m_SortingLayer: 0
+  m_SortingLayerID: 209796967
+  m_SortingLayer: 1
   m_SortingOrder: 0
 --- !u!1 &1216257641
 GameObject:
@@ -2033,7 +2033,7 @@ Camera:
   m_GameObject: {fileID: 1500100153}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3305,8 +3305,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869982225}
   m_Enabled: 1
-  m_SortingLayerID: 2097750727
-  m_SortingLayer: 0
+  m_SortingLayerID: 209796967
+  m_SortingLayer: 1
   m_SortingOrder: 0
 --- !u!1 &1877822786
 GameObject:
@@ -3536,6 +3536,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 152857737}
     m_Modifications:
+    - target: {fileID: 2616809535132260505, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.46
+      objectReference: {fileID: 0}
     - target: {fileID: 8007466312498025151, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3611,7 +3615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073972946613542793, guid: 3de838754c767a446a5473969062a84e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8073972946613542793, guid: 3de838754c767a446a5473969062a84e, type: 3}
       propertyPath: m_LocalRotation.w
