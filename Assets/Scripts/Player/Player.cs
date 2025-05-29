@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myRB;
+
+    [Header("Speed Setup")]
     public Vector2 friction = new Vector2(.1f, 0);
     public float speed;
     public float speedRun;
     public float forceJump;
+
+    [Header("Animation Setup")]
+    public float jumpScaleY = 1.5f;
+    public float jumpScaleX = .7f;
+    public float animationDuration = .3f;
 
     private float _currentSpeed;
 
@@ -49,6 +57,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRB.velocity = Vector2.up * forceJump;
+            HandleScaleJump();
         }
+    }
+
+    private void HandleScaleJump()
+    {
+        myRB.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo);
+        myRB.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo);
     }
 }
