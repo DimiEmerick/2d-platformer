@@ -669,6 +669,7 @@ MonoBehaviour:
   jumpScaleY: 1.5
   jumpScaleX: 0.7
   animationDuration: 0.3
+  ease: 27
 --- !u!1 &1163929187
 GameObject:
   m_ObjectHideFlags: 0
