@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public float jumpScaleY = 1.5f;
     public float jumpScaleX = .7f;
     public float animationDuration = .3f;
+    public Ease ease = Ease.OutBack;
 
     private float _currentSpeed;
 
@@ -57,13 +58,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             myRB.velocity = Vector2.up * forceJump;
+            myRB.transform.localScale = Vector2.one;
+            DOTween.Kill(myRB.transform);
             HandleScaleJump();
         }
     }
 
     private void HandleScaleJump()
     {
-        myRB.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo);
-        myRB.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo);
+        myRB.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+        myRB.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 }
