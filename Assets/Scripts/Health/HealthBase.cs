@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthBase : MonoBehaviour
 {
     public float startLife = 10;
+    public float delayToKill = 1f;
     public bool destroyOnKill = false;
 
     private float _currentLife;
@@ -34,6 +35,6 @@ public class HealthBase : MonoBehaviour
     private void Kill()
     {
         _isDead = true;
-        if (destroyOnKill) Destroy(gameObject);
+        if (destroyOnKill) Destroy(gameObject, delayToKill);
     }
 }
