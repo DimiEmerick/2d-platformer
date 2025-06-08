@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     public float animationDuration = .3f;
     public Ease ease = Ease.OutBack;
 
+    [Header("Animation Player")]
+    public string boolRun = "Run";
+    public Animator animator;
+
     private float _currentSpeed;
 
     private void Update()
@@ -36,11 +40,19 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            animator.SetBool(boolRun, true);
+            myRB.transform.localScale = new Vector3(-1, 1, 1);
             myRB.velocity = new Vector2(-_currentSpeed, myRB.velocity.y);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
+            animator.SetBool(boolRun, true);
+            myRB.transform.localScale = new Vector3(1, 1, 1);
             myRB.velocity = new Vector2(_currentSpeed, myRB.velocity.y);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
         }
 
         if (myRB.velocity.x > 0)
