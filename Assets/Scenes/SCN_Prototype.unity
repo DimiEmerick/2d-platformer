@@ -1154,6 +1154,7 @@ MonoBehaviour:
   animationDuration: 0.3
   ease: 27
   boolRun: Run
+  playerSwipeDuration: 0.1
   animator: {fileID: 461278901}
 --- !u!114 &1036649852
 MonoBehaviour:
