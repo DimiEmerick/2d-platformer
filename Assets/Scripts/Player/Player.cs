@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     [Header("Animation Player")]
     public string boolRun = "Run";
+    public float playerSwipeDuration = .1f;
     public Animator animator;
 
     private float _currentSpeed;
@@ -41,13 +42,19 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             animator.SetBool(boolRun, true);
-            myRB.transform.localScale = new Vector3(-1, 1, 1);
+            if (myRB.transform.localScale.x != -1)
+            {
+                myRB.transform.DOScaleX(-1, 1f);
+            }
             myRB.velocity = new Vector2(-_currentSpeed, myRB.velocity.y);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             animator.SetBool(boolRun, true);
-            myRB.transform.localScale = new Vector3(1, 1, 1);
+            if (myRB.transform.localScale.x != 1)
+            {
+                myRB.transform.DOScaleX(1, 1f);
+            }
             myRB.velocity = new Vector2(_currentSpeed, myRB.velocity.y);
         }
         else
