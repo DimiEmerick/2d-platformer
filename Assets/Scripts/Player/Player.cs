@@ -35,16 +35,22 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         if (Input.GetKey(KeyCode.LeftShift))
+        {
             _currentSpeed = speedRun;
+            animator.speed = 2f;
+        }
         else
+        {
             _currentSpeed = speed;
+            animator.speed = 1f;
+        }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             animator.SetBool(boolRun, true);
             if (myRB.transform.localScale.x != -1)
             {
-                myRB.transform.DOScaleX(-1, 1f);
+                myRB.transform.DOScaleX(-1, playerSwipeDuration);
             }
             myRB.velocity = new Vector2(-_currentSpeed, myRB.velocity.y);
         }
@@ -53,7 +59,7 @@ public class Player : MonoBehaviour
             animator.SetBool(boolRun, true);
             if (myRB.transform.localScale.x != 1)
             {
-                myRB.transform.DOScaleX(1, 1f);
+                myRB.transform.DOScaleX(1, playerSwipeDuration);
             }
             myRB.velocity = new Vector2(_currentSpeed, myRB.velocity.y);
         }
