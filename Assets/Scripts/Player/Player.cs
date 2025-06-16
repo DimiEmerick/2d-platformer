@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using DG.Tweening;
 public class Player : MonoBehaviour
 {
     public Rigidbody2D myRB;
+    public HealthBase healthBase;
 
     [Header("Speed Setup")]
     public Vector2 friction = new Vector2(.1f, 0);
@@ -21,10 +23,25 @@ public class Player : MonoBehaviour
 
     [Header("Animation Player")]
     public string boolRun = "Run";
+    public string triggerDeath = "Death";
     public float playerSwipeDuration = .1f;
     public Animator animator;
 
     private float _currentSpeed;
+
+    private void Awake()
+    {
+        if (healthBase != null)
+        {
+            healthBase.OnKill += OnPlayerKill;
+        }
+    }
+
+    private void OnPlayerKill()
+    {
+        healthBase.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerDeath);
+    }
 
     private void Update()
     {
@@ -93,5 +110,10 @@ public class Player : MonoBehaviour
     {
         myRB.transform.DOScaleY(jumpScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         myRB.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+    }
+
+    private void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }

@@ -9,6 +9,7 @@ public class EnemyBase : MonoBehaviour
     public HealthBase healthBase;
     public string triggerAttack = "Attack";
     public string triggerKill = "Death";
+    public float timeToDestroy = 1f;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class EnemyBase : MonoBehaviour
     {
         healthBase.OnKill -= OnEnemyKill;
         PlayKillAnimation();
+        Destroy(gameObject, timeToDestroy);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
