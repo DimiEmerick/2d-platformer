@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
         myRB.transform.DOScaleX(jumpScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }
 
-    private void DestroyMe()
+    public void DestroyMe()
     {
         Destroy(gameObject);
     }
