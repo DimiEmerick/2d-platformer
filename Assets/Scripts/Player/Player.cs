@@ -12,9 +12,8 @@ public class Player : MonoBehaviour
     [Header("Player Setup")]
     public SOPlayerSetup soPlayerSetup;
 
-    public Animator animator;
-
     private float _currentSpeed;
+    private Animator _currentPlayer;
 
     private void Awake()
     {
@@ -22,12 +21,13 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
+        _currentPlayer = Instantiate(soPlayerSetup.player, transform);
     }
 
     private void OnPlayerKill()
     {
         healthBase.OnKill -= OnPlayerKill;
-        animator.SetTrigger(soPlayerSetup.triggerDeath);
+        _currentPlayer.SetTrigger(soPlayerSetup.triggerDeath);
     }
 
     private void Update()
@@ -41,17 +41,17 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             _currentSpeed = soPlayerSetup.speedRun;
-            animator.speed = 2f;
+            _currentPlayer.speed = 2f;
         }
         else
         {
             _currentSpeed = soPlayerSetup.speed;
-            animator.speed = 1f;
+            _currentPlayer.speed = 1f;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            animator.SetBool(soPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
             if (myRB.transform.localScale.x != -1)
             {
                 myRB.transform.DOScaleX(-1, soPlayerSetup.playerSwipeDuration);
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool(soPlayerSetup.boolRun, true);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, true);
             if (myRB.transform.localScale.x != 1)
             {
                 myRB.transform.DOScaleX(1, soPlayerSetup.playerSwipeDuration);
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            animator.SetBool(soPlayerSetup.boolRun, false);
+            _currentPlayer.SetBool(soPlayerSetup.boolRun, false);
         }
 
         if (myRB.velocity.x > 0)
