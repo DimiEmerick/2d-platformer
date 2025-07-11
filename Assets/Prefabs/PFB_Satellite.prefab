@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 1511985007705347741}
   - component: {fileID: 1511985007705347743}
   - component: {fileID: -5865439321275648327}
-  - component: {fileID: -2783097354771070517}
   - component: {fileID: -6042890774098646341}
+  - component: {fileID: -2783097354771070517}
   m_Layer: 0
   m_Name: PFB_Satellite
   m_TagString: Untagged
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1511985007705347740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.7700195, y: 1.3099976, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1511985009118519333}
@@ -112,6 +112,19 @@ SortingGroup:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 15
+--- !u!114 &-6042890774098646341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511985007705347740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e7b12144c80af498833718edbda210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compareTag: Player
 --- !u!61 &-2783097354771070517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138,19 +151,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.1541, y: 4.492094}
   m_EdgeRadius: 0
---- !u!114 &-6042890774098646341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511985007705347740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e7b12144c80af498833718edbda210, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  compareTag: Player
 --- !u!1 &1511985007713391010
 GameObject:
   m_ObjectHideFlags: 0
