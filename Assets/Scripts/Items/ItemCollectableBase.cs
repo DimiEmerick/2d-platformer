@@ -9,11 +9,6 @@ public class ItemCollectableBase : MonoBehaviour
     public float timeToHide = 3f;
     public GameObject graphicItem;
 
-    private void Awake()
-    {
-        // if (particleSystem != null) particleSystem.transform.SetParent(null);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag(compareTag))
