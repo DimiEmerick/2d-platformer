@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     public Collider2D collider2D;
     public float disToGround;
     public float spaceToGround = .1f;
+    public LayerMask groundLayer;
+    public ParticleSystem jumpVFX;
+
+    private Vector3 _rayStartPosition;
 
     private void Awake()
     {
@@ -34,9 +38,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void IsGrounded()
+    private bool IsGrounded()
     {
-        Debug.DrawRay(transform.position, -Vector2.up, Color.magenta, disToGround + spaceToGround);
+        Debug.DrawRay(_rayStartPosition, Vector2.down, Color.magenta, disToGround + spaceToGround);
+        return Physics2D.Raycast(_rayStartPosition, Vector2.down, disToGround + spaceToGround, groundLayer);
     }
 
     private void OnPlayerKill()
@@ -47,6 +52,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _rayStartPosition = transform.position;
+        _rayStartPosition.y -= 2.5f;
         IsGrounded();
         HandleJump();
         HandleMovement();
@@ -100,13 +107,19 @@ public class Player : MonoBehaviour
 
     private void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded())
         {
             myRB.velocity = Vector2.up * soPlayerSetup.forceJump;
             myRB.transform.localScale = Vector2.one;
             DOTween.Kill(myRB.transform);
             HandleScaleJump();
+            PlayJumpVFX();
         }
+    }
+
+    private void PlayJumpVFX()
+    {
+        if (jumpVFX != null) jumpVFX.Play();
     }
 
     private void HandleScaleJump()
