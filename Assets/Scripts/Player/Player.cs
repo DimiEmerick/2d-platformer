@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     [Header("Player Setup")]
     public SOPlayerSetup soPlayerSetup;
+    public AudioRandomPlayAudioClips audioSteps;
 
     private float _currentSpeed;
     private Animator _currentPlayer;
@@ -80,6 +81,10 @@ public class Player : MonoBehaviour
                 myRB.transform.DOScaleX(-1, soPlayerSetup.playerSwipeDuration);
             }
             myRB.velocity = new Vector2(-_currentSpeed, myRB.velocity.y);
+            if (IsGrounded())
+            {
+                audioSteps.PlayRandom();
+            }
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -89,6 +94,10 @@ public class Player : MonoBehaviour
                 myRB.transform.DOScaleX(1, soPlayerSetup.playerSwipeDuration);
             }
             myRB.velocity = new Vector2(_currentSpeed, myRB.velocity.y);
+            if (IsGrounded())
+            {
+                audioSteps.PlayRandom();
+            }
         }
         else
         {
