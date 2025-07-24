@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private Animator _currentPlayer;
 
     [Header("Jump Collision Check")]
-    public Collider2D collider2D;
+    public Collider2D jumpCollider2D;
     public float disToGround;
     public float spaceToGround = .1f;
     public LayerMask groundLayer;
@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
         }
         _currentPlayer = Instantiate(soPlayerSetup.player, transform);
 
-        if (collider2D != null)
+        if (jumpCollider2D != null)
         {
-            disToGround = collider2D.bounds.extents.y;
+            disToGround = jumpCollider2D.bounds.extents.y;
         }
     }
 

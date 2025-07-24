@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144642344}
   m_Layer: 0
-  m_Name: === GAMEPLAY ===
+  m_Name: === GAME ===
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +695,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -909,7 +909,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3328,7 +3328,7 @@ MonoBehaviour:
   healthBase: {fileID: 1036649852}
   soPlayerSetup: {fileID: 11400000, guid: a819b350da001e046b920b96470bdf10, type: 2}
   audioSteps: {fileID: 1401751926}
-  collider2D: {fileID: 1036649850}
+  jumpCollider2D: {fileID: 0}
   disToGround: 0
   spaceToGround: 0.1
   groundLayer:
@@ -3810,6 +3810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1222003135}
   - component: {fileID: 1222003136}
+  - component: {fileID: 1222003137}
   m_Layer: 5
   m_Name: Slider_Ambience
   m_TagString: Untagged
@@ -3883,13 +3884,39 @@ MonoBehaviour:
   m_FillRect: {fileID: 1892229563}
   m_HandleRect: {fileID: 1698114035}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -20
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1222003137}
+        m_TargetAssemblyTypeName: AudioChangeVolume, Assembly-CSharp
+        m_MethodName: ChangeValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1222003137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222003134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbda09f01d0bcf489f736dd5ce9655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatParam: Volume Ambience
+  group: {fileID: 24100000, guid: bf183777fa62b2141ac08157dd272299, type: 2}
 --- !u!1 &1225850108
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,7 +3932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1225850109
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4721,6 +4748,7 @@ GameObject:
   - component: {fileID: 1384284805}
   - component: {fileID: 1384284804}
   - component: {fileID: 1384284803}
+  - component: {fileID: 1384284806}
   m_Layer: 5
   m_Name: Button_Transition2
   m_TagString: Untagged
@@ -4791,7 +4819,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1384284804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1384284806}
+        m_TargetAssemblyTypeName: AudioTransition, Assembly-CSharp
+        m_MethodName: MakeTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1384284804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4830,6 +4870,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384284801}
   m_CullTransparentMesh: 1
+--- !u!114 &1384284806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1384284801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9bb91f84b0b1448bbad57ba75b8da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTime: 0.1
+  snapshot: {fileID: 24500006, guid: bf183777fa62b2141ac08157dd272299, type: 2}
 --- !u!4 &1401545570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9122401859702361417, guid: 014fc7a6f78881f4cb6e17073f114f9c, type: 3}
@@ -5091,6 +5145,7 @@ GameObject:
   - component: {fileID: 1495446684}
   - component: {fileID: 1495446683}
   - component: {fileID: 1495446682}
+  - component: {fileID: 1495446685}
   m_Layer: 5
   m_Name: Button_Transition1
   m_TagString: Untagged
@@ -5161,7 +5216,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1495446683}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1495446685}
+        m_TargetAssemblyTypeName: AudioTransition, Assembly-CSharp
+        m_MethodName: MakeTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1495446683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5200,6 +5267,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495446680}
   m_CullTransparentMesh: 1
+--- !u!114 &1495446685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495446680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9bb91f84b0b1448bbad57ba75b8da4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionTime: 0.1
+  snapshot: {fileID: -346381350236018046, guid: bf183777fa62b2141ac08157dd272299, type: 2}
 --- !u!1 &1496536289
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,7 +6513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Transition 1
+  m_text: Transition In-Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -6742,7 +6823,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7652,7 +7733,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8019,7 +8100,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Transition 2
+  m_text: Transition Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -13256,6 +13337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091094096}
   - component: {fileID: 2091094097}
+  - component: {fileID: 2091094098}
   m_Layer: 5
   m_Name: Slider_SFX
   m_TagString: Untagged
@@ -13329,13 +13411,39 @@ MonoBehaviour:
   m_FillRect: {fileID: 439984080}
   m_HandleRect: {fileID: 407126452}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2091094098}
+        m_TargetAssemblyTypeName: AudioChangeVolume, Assembly-CSharp
+        m_MethodName: ChangeValue
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2091094098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091094095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbda09f01d0bcf489f736dd5ce9655a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatParam: Volume SFX
+  group: {fileID: 24100000, guid: bf183777fa62b2141ac08157dd272299, type: 2}
 --- !u!1 &2112017162
 GameObject:
   m_ObjectHideFlags: 0
