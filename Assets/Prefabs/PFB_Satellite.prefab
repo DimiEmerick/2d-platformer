@@ -125,6 +125,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  timeToHide: 3
+  itemParticleSystem: {fileID: 0}
+  graphicItem: {fileID: 1511985009118519332}
+  colliderItem: {fileID: -2783097354771070517}
+  audioSource: {fileID: 0}
 --- !u!61 &-2783097354771070517
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -446,8 +451,8 @@ MonoBehaviour:
   - {fileID: 1511985007838255845}
   - {fileID: 1511985008186693345}
   m_Bounds:
-    m_Center: {x: 0.19740391, y: 0.18278122, z: 0}
-    m_Extent: {x: 3.7725773, y: 2.2985492, z: 0}
+    m_Center: {x: 0.19742155, y: 0.18275452, z: 0}
+    m_Extent: {x: 3.7725787, y: 2.2985249, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1511985009157070628

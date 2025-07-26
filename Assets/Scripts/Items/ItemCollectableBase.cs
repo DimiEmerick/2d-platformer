@@ -8,6 +8,7 @@ public class ItemCollectableBase : MonoBehaviour
     public float timeToHide = 3f;
     public ParticleSystem itemParticleSystem;
     public GameObject graphicItem;
+    public Collider2D colliderItem;
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -24,6 +25,7 @@ public class ItemCollectableBase : MonoBehaviour
     {
         if (graphicItem != null) graphicItem.SetActive(false);
         Invoke("HideObject", timeToHide);
+        colliderItem.enabled = false;
         OnCollect();
     }
 
