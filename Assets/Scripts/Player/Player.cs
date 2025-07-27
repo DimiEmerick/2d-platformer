@@ -9,18 +9,22 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRB;
     public HealthBase healthBase;
 
+    public TranslateGameObject wallOne;
+    public TranslateGameObject wallTwo;
+
     [Header("Player Setup")]
     public SOPlayerSetup soPlayerSetup;
     public AudioRandomPlayAudioClips audioSteps;
+    public AudioSource audioJump;
 
     private float _currentSpeed;
     private Animator _currentPlayer;
 
     [Header("Jump Collision Check")]
-    public Collider2D jumpCollider2D;
     public float disToGround;
     public float spaceToGround = .1f;
     public LayerMask groundLayer;
+    public Collider2D jumpCollider2D;
     public ParticleSystem jumpVFX;
 
     private Vector3 _rayStartPosition;
@@ -85,6 +89,8 @@ public class Player : MonoBehaviour
             {
                 audioSteps.PlayRandom();
             }
+            wallOne.Paralax(_currentPlayer.speed * 1.5f);
+            wallTwo.Paralax(_currentPlayer.speed * .25f);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -98,6 +104,8 @@ public class Player : MonoBehaviour
             {
                 audioSteps.PlayRandom();
             }
+            wallOne.Paralax(-_currentPlayer.speed * 1.5f);
+            wallTwo.Paralax(-_currentPlayer.speed * .25f);
         }
         else
         {
@@ -123,6 +131,7 @@ public class Player : MonoBehaviour
             DOTween.Kill(myRB.transform);
             HandleScaleJump();
             PlayJumpVFX();
+            audioJump.Play();
         }
     }
 
